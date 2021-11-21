@@ -1,7 +1,7 @@
-v1.0:
+v1.0 (November 18, 2021):
 - Initial version of the app.
 
-v1.1:
+v1.1 (November 21, 2021):
 
 - Added license, other files.
 - Plot setup changed to offer interactivity
