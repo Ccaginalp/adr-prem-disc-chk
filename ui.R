@@ -10,10 +10,11 @@
 library(shiny)
 library(shinyWidgets)
 library(shinydashboard)
+library(plotly)
 
 # Define UI for application that draws a histogram
 dashboardPage(skin = 'blue',
-              dashboardHeader(title = "Premium/discount app for ADR", titleWidth = 280),
+              dashboardHeader(title = "ADR valuation app", titleWidth = 280),
               dashboardSidebar(width = 280,  
                                sidebarMenu(
                                    menuItem("Welcome!", tabName = "intro", icon = icon("th")),
@@ -37,7 +38,9 @@ dashboardPage(skin = 'blue',
                                         discount or premium of an ADR over time. An additional support feature 
                                         allows the user to smooth the fair value of the underlying asset by taking 
                                         a lagged mean to reduce some of the day-to-day volatility and clarify 
-                                        the picture.")
+                                        the picture."),
+                                      br(),
+                                      p(strong("Version 1.1: November 21, 2021"))
                                   )
                               )),
                       # Second tab content
@@ -83,10 +86,13 @@ dashboardPage(skin = 'blue',
                                         can be specified as desired to average out n days back. For n = 1, this 
                                         reduces to fair value as of most recent close in the home market data."),
                                       br(),
-                                      br(),
-                                      p(strong("Click 'Submit' to generate the chart!'")),
+                                      p(strong("Click 'Submit' to generate the charts!")),
                                       p("Share price and fair value chart below:"),
-                                      plotOutput("prem_disc_chart")
+                                      plotlyOutput("prem_disc_chart"),
+                                      br(),
+                                      p("Premium/discount by date:"),
+                                      br(),
+                                      plotlyOutput("margin_val_chart")
                                   )
                               )
                       ),
@@ -96,45 +102,12 @@ dashboardPage(skin = 'blue',
                                        p("Thanks to tidyquant package for integrated API for stock quotes."),
                                        p("Thanks to Yahoo Finance for API stock quote data."),
                                        p("Thanks to R and Shiny for making interactive apps possible!"),
-                                       p("This software is provided as-is and with no guarantee of accuracy.")
+                                       p("This software is provided as-is and with no guarantee of accuracy. 
+                                          For futher details, see the ", tags$a(href = "https://github.com/Ccaginalp/adr-prem-disc-chk/blob/4be9667987ffb65de4aefbeb42ce6446792134c7/license.txt", "license"),
+                                         ".")
                                    )
                                    )
                               )
                   )
               )
 )
-
-# 
-# shinyUI(fluidPage(
-# 
-#     # Application title
-#     titlePanel("Correlation between US and Asian stock markets"),
-# 
-#     # Sidebar with a slider input for number of bins
-#     sidebarLayout(
-#         sidebarPanel(
-#             sliderInput("year",
-#                         "Years pictured:",
-#                         min = 2000,
-#                         max = 2022,
-#                         value = c(2011, 2022)),
-#             selectInput("USIndex",
-#                         "US Index",
-#                         c("S&P 500", "Nasdaq", "Dow"),
-#                         selected = "S&P 500"),
-#             selectInput("AsiaIndex",
-#                         "Asian Index",
-#                         sort(c("China", "Hong Kong", "Shenzhen", "Taiwan", "Singapore",
-#                           "Australia", "New Zealand", "Malaysia", "Japan", 
-#                           "South Korea")),
-#                         selected = "China")
-#         ),
-# 
-#         # Show a plot of the generated distribution
-#         mainPanel(
-#             plotOutput("CorrChart"),
-#             plotOutput("ChartIndexUS"),
-#             plotOutput("ChartIndexAsia")
-#         )
-#     )
-# ))

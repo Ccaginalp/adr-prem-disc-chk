@@ -4,4 +4,5 @@ v1.0:
 v1.1:
 
 - Added license, other files.
-- 
+- Plot setup changed to offer interactivity
+- New plot to show valuation difference in percent added
