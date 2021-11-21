@@ -17,7 +17,7 @@ dashboardPage(skin = 'blue',
               dashboardSidebar(width = 280,  
                                sidebarMenu(
                                    menuItem("Welcome!", tabName = "intro", icon = icon("th")),
-                                   menuItem("Correlation plot over time", tabName = "corplot", icon = icon("th")),
+                                   menuItem("Premium/discount over time", tabName = "corplot", icon = icon("th")),
                                    menuItem("Credits", tabName = "credit", icon = icon("th"))
                                )),
               dashboardBody(
@@ -79,7 +79,7 @@ dashboardPage(skin = 'blue',
                                         the ", tags$a(href = "http://www.finance.yahoo.com", "Yahoo! Finance"),
                                         " website. Any conversion rate in the number of common shares to the 
                                         ADR will also need to be supplied by the user. In the provided example 
-                                        of TSM, this is 5 common to shares to one ADR. The smoothing for FV 
+                                        of TSM, this is 5 common shares to one ADR. The smoothing for FV 
                                         can be specified as desired to average out n days back. For n = 1, this 
                                         reduces to fair value as of most recent close in the home market data."),
                                       br(),
