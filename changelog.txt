@@ -1,0 +1,7 @@
+v1.0:
+- Initial version of the app.
+
+v1.1:
+
+- Added license, other files.
+- 
